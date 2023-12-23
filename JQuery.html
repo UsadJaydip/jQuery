@@ -1,0 +1,115 @@
+<h1 align="center"> JQuery </h1>
+
+
+<h1> (1) What is JQuery ? </h1>
+<h3> => jQuery is a JavaScript library. </h3>
+<h3> => The purpose of jQuery is to make it much easier to use JavaScript on your website.</h3>
+<h3> => jQuery also simplifies a lot of the complicated things from JavaScript, like AJAX calls and DOM manipulation.</h3>
+<h3> => jQuery greatly simplifies JavaScript programming.</h3>
+<h3> => jQuery is easy to learn.</h3> <br> <br> <br>
+
+<h1> (2) How to Apply CSS Using JQuery, How to Add Class and Remove Class in JQuery, JQuery Animation?</h1>
+<h3> => The css() method sets or returns one or more style properties for the selected elements. </h3>
+<h3> => Example : $("p").css("background-color"); </h3>
+
+<h3> => addClass() - Adds one or more classes to the selected elements.</h3>
+<h3> => removeClass() - Removes one or more classes from the selected elements.</h3>
+
+<h3> => The required params parameter defines the CSS properties to be animated.</h3>
+<h3> => The optional callback parameter is a function to be executed after the animation completes.</h3>
+<h3> => Example : $("button").click(function(){
+    $("div").animate({left: '250px'});
+  }); </h3> <br> <br> <br>
+
+<h1> (3) How to create slider with animation ? </h1>
+<h3> => create a slider with animation in jQuery, you can utilize jQuery's methods to manipulate DOM elements and use CSS for styling and transitions.</h3>
+<h3> =>  Here's an example of how you might create a basic slider with animation. </h3>
+<h3> => Example :  <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>jQuery Slider Example</title>
+      <style>
+        .slider-container {
+          width: 300px;
+          overflow: hidden;
+          margin: 20px auto;
+          position: relative;
+        }
+    
+        .slider {
+          width: 900px; /* Total width of all slides */
+          display: flex;
+          transition: transform 0.5s ease;
+        }
+    
+        .slide {
+          flex: 0 0 300px; /* Individual slide width */
+          text-align: center;
+          padding: 20px;
+          border: 1px solid #ccc;
+        }
+    
+        button {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: #007bff;
+          color: #fff;
+          border: none;
+          padding: 8px 16px;
+          cursor: pointer;
+        }
+    
+        .prev {
+          left: 10px;
+        }
+    
+        .next {
+          right: 10px;
+        }
+      </style>
+    </head>
+    <body>
+    
+    <div class="slider-container">
+      <div class="slider">
+        <div class="slide">Slide 1</div>
+        <div class="slide">Slide 2</div>
+        <div class="slide">Slide 3</div>
+      </div>
+      <button class="prev">Previous</button>
+      <button class="next">Next</button>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        var slideCount = $('.slide').length;
+        var slideWidth = $('.slide').outerWidth();
+        var sliderWidth = slideCount * slideWidth;
+        $('.slider').width(sliderWidth);
+    
+        var currentIndex = 0;
+    
+        function goToSlide(index) {
+          if (index < 0 || index >= slideCount) return;
+    
+          currentIndex = index;
+          var translateValue = -currentIndex * slideWidth;
+          $('.slider').css('transform', 'translateX(' + translateValue + 'px)');
+        }
+    
+        $('.prev').click(function() {
+          goToSlide(currentIndex - 1);
+        });
+    
+        $('.next').click(function() {
+          goToSlide(currentIndex + 1);
+        });
+      });
+    </script>
+    
+    </body>
+    </html>
+    </h3>
